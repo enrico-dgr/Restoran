@@ -1,0 +1,73 @@
+// -----------
+// Colors
+// -----------
+$primary: #FEA116;
+$dark: #0F172B;
+
+// Add colors here to use them in the project through derivations
+$colors: (
+  primary: $primary,
+  dark: $dark,
+);
+
+// Colors' derivations
+
+// This generate classes like ".text-primary" or ".bg-primary" ( we're emulating bootstrap classes )
+@each $name, $color in $colors {
+  .text-#{$name} {
+    color: $color;
+  }
+
+  .bg-#{$name} {
+    background-color: $color;
+  }
+}
+
+// -----------
+// Margins and paddings with responsive variations
+// -----------
+
+$sizes: (
+  0: 0,
+  1: 4,
+  2: 8,
+  3: 16,
+  4: 24,
+  5: 32
+);
+
+// default
+@each $size, $value in $sizes {
+  .p-#{$size} {
+    padding: pxToRem($value);
+  }
+
+  .py-#{$size} {
+    padding-top: pxToRem($value);
+    padding-bottom: pxToRem($value);
+  }
+
+  .px-#{$size} {
+    padding-left: pxToRem($value);
+    padding-right: pxToRem($value);
+  }
+}
+
+// lg
+@media (min-width: 992px) {
+  @each $size, $value in $sizes {
+    .p-lg-#{$size} {
+      padding: pxToRem($value);
+    }
+
+    .py-lg-#{$size} {
+      padding-top: pxToRem($value);
+      padding-bottom: pxToRem($value);
+    }
+
+    .px-lg-#{$size} {
+      padding-left: pxToRem($value);
+      padding-right: pxToRem($value);
+    }
+  }
+}
