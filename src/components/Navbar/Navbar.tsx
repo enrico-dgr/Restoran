@@ -21,23 +21,23 @@ export default function Navbar() {
         <FontAwesomeIcon icon={faBars} />
       </button>
       <div className="collapse navbar-collapse" id="navbarCollapse">
-        <div className="navbar-nav ms-auto py-0 pe-4">
-          <a href="index.html" className="nav-item nav-link active">
+        <div className="navbar-links navbar-nav ms-auto py-0 pe-4">
+          <a href="index.html" className="navbar-item navbar-link active">
             Home
           </a>
-          <a href="about.html" className="nav-item nav-link">
+          <a href="about.html" className="navbar-item navbar-link">
             About
           </a>
-          <a href="service.html" className="nav-item nav-link">
+          <a href="service.html" className="navbar-item navbar-link">
             Service
           </a>
-          <a href="menu.html" className="nav-item nav-link">
+          <a href="menu.html" className="navbar-item navbar-link">
             Menu
           </a>
-          <div className="nav-item dropdown">
+          <div className="navbar-item dropdown">
             <a
               href="#"
-              className="nav-link dropdown-toggle"
+              className="navbar-link dropdown-toggle"
               data-bs-toggle="dropdown"
               aria-expanded="false"
             >
@@ -55,7 +55,7 @@ export default function Navbar() {
               </a>
             </div>
           </div>
-          <a href="contact.html" className="nav-item nav-link">
+          <a href="contact.html" className="navbar-item navbar-link">
             Contact
           </a>
         </div>

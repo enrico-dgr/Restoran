@@ -1,4 +1,5 @@
 import { BrowserRouter, Routes, Route } from 'react-router-dom'
+import { Helmet } from 'react-helmet'
 import Home from './pages/Home/Home'
 import Menu from './pages/Menu/Menu'
 import About from './pages/About/About'
@@ -10,6 +11,9 @@ function App() {
   return (
     <div className="container-xxl bg-white p-0">
       <ContentLoadingSpinner />
+      <Helmet>
+        <title>Restoran - Bootstrap Restaurant Template</title>
+      </Helmet>
       <BrowserRouter>
         <Routes>
           <Route path="/" element={<Home />}>

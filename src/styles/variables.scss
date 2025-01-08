@@ -61,6 +61,10 @@ $m_p_sizes: (
     margin: f.pxToRem($value);
   }
 
+  .ml-#{$size} {
+    margin-right: f.pxToRem($value);
+  }
+
   .mr-#{$size} {
     margin-right: f.pxToRem($value);
   }
