@@ -6,6 +6,15 @@
   box-sizing: border-box;
 }
 
+body {
+  margin: 0;
+  font-family: "Heebo", sans-serif;
+  font-size: 1rem;
+  font-weight: 400;
+  line-height: 1.5;
+  color: #666565;
+}
+
 a {
   text-decoration: none;
   color: #000;

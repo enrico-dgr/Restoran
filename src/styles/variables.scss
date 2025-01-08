@@ -33,50 +33,59 @@ $colors: (
 // -----------
 
 $m_p_sizes: (
+  auto: auto,
   0: 0,
-  1: 4,
-  2: 8,
-  3: 16,
-  4: 24,
-  5: 32
+  1: f.pxToRem(4),
+  2: f.pxToRem(8),
+  3: f.pxToRem(16),
+  4: f.pxToRem(24),
+  5: f.pxToRem(32)
 );
 
 // default
 @each $size, $value in $m_p_sizes {
   .p-#{$size} {
-    padding: f.pxToRem($value);
+    padding: $value;
+  }
+
+  .pl-#{$size} {
+    padding-left: $value;
+  }
+
+  .pr-#{$size} {
+    padding-right: $value;
   }
 
   .py-#{$size} {
-    padding-top: f.pxToRem($value);
-    padding-bottom: f.pxToRem($value);
+    padding-top: $value;
+    padding-bottom: $value;
   }
 
   .px-#{$size} {
-    padding-left: f.pxToRem($value);
-    padding-right: f.pxToRem($value);
+    padding-left: $value;
+    padding-right: $value;
   }
 
   .m-#{$size} {
-    margin: f.pxToRem($value);
+    margin: $value;
   }
 
   .ml-#{$size} {
-    margin-right: f.pxToRem($value);
+    margin-left: $value;
   }
 
   .mr-#{$size} {
-    margin-right: f.pxToRem($value);
+    margin-right: $value;
   }
 
   .my-#{$size} {
-    margin-top: f.pxToRem($value);
-    margin-bottom: f.pxToRem($value);
+    margin-top: $value;
+    margin-bottom: $value;
   }
 
   .mx-#{$size} {
-    margin-left: f.pxToRem($value);
-    margin-right: f.pxToRem($value);
+    margin-left: $value;
+    margin-right: $value;
   }
 }
 
@@ -84,17 +93,17 @@ $m_p_sizes: (
 @media (min-width: 992px) {
   @each $size, $value in $m_p_sizes {
     .p-lg-#{$size} {
-      padding: f.pxToRem($value);
+      padding: $value;
     }
 
     .py-lg-#{$size} {
-      padding-top: f.pxToRem($value);
-      padding-bottom: f.pxToRem($value);
+      padding-top: $value;
+      padding-bottom: $value;
     }
 
     .px-lg-#{$size} {
-      padding-left: f.pxToRem($value);
-      padding-right: f.pxToRem($value);
+      padding-left: $value;
+      padding-right: $value;
     }
   }
 }

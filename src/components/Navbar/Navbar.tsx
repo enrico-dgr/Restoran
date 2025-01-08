@@ -1,9 +1,108 @@
-import { Link } from 'react-router-dom'
+import { Link, useLocation } from 'react-router-dom'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faUtensils, faBars } from '@fortawesome/free-solid-svg-icons'
 import './Navbar.scss'
+import { useMemo, useState, useCallback } from 'react'
+import routes from '../../routes'
+import LinkOrGroup, { NavbarLink } from './LinkOrGroup'
 
 export default function Navbar() {
+  const [showLinksContainer, setShowLinksContainer] = useState(false)
+  const location = useLocation();
+
+  const links = useMemo<NavbarLink[]>(
+    () => [
+      {
+        group: false,
+        name: 'home',
+      },
+      {
+        group: false,
+        name: 'about',
+      },
+      {
+        group: false,
+        name: 'service',
+      },
+      {
+        group: false,
+        name: 'menu',
+      },
+      {
+        group: true,
+        groupName: 'Pages',
+        links: [
+          {
+            group: false,
+            name: 'booking',
+          },
+          {
+            group: false,
+            name: 'team',
+          },
+          {
+            group: false,
+            name: 'testimonial',
+          },
+        ],
+      },
+      {
+        group: false,
+        name: 'contact',
+      },
+    ],
+    []
+  )
+
+  const toggleLinks = useCallback(() => {
+    setShowLinksContainer(prev => !prev)
+  }, [])
+
+  const linksContainerClass = useMemo(() => {
+    let classes = 'navbar-links__container'
+
+    if (showLinksContainer) {
+      classes += ' show'
+    }
+
+    return classes
+  }, [showLinksContainer])
+
+  const checkActive = useCallback(
+    (linkOrGroup: NavbarLink) => {
+      let active = false
+
+      if (linkOrGroup.group) {
+        active = linkOrGroup.links.findIndex(checkActive) !== -1
+      } else {
+        active = location.pathname === routes[linkOrGroup.name].absolutePath
+      }
+
+      return active
+    },
+    [location.pathname]
+  )
+
+  const linksElements = useMemo(
+    () =>
+      links.map(linkOrGroup => {
+        const active = checkActive(linkOrGroup)
+
+        return (
+          <LinkOrGroup
+            key={
+              linkOrGroup.group
+                ? linkOrGroup.groupName
+                : routes[linkOrGroup.name].absolutePath
+            }
+            link={linkOrGroup}
+            className={`navbar-item ${active ? 'active' : ''}`}
+          />
+        )
+      }),
+    [checkActive, links]
+  )
+
   return (
     <nav className="navbar bg-dark px-4 px-lg-5 py-3 py-lg-0">
       <Link className="navbar-brand" to="/">
@@ -12,53 +111,11 @@ export default function Navbar() {
           Restoran
         </h1>
       </Link>
-      <button
-        className="navbar-toggler"
-        type="button"
-        data-bs-toggle="collapse"
-        data-bs-target="#navbarCollapse"
-      >
+      <button className="navbar-toggler" type="button" onClick={toggleLinks}>
         <FontAwesomeIcon icon={faBars} />
       </button>
-      <div className="collapse navbar-collapse" id="navbarCollapse">
-        <div className="navbar-links navbar-nav ms-auto py-0 pe-4">
-          <a href="index.html" className="navbar-item navbar-link active">
-            Home
-          </a>
-          <a href="about.html" className="navbar-item navbar-link">
-            About
-          </a>
-          <a href="service.html" className="navbar-item navbar-link">
-            Service
-          </a>
-          <a href="menu.html" className="navbar-item navbar-link">
-            Menu
-          </a>
-          <div className="navbar-item dropdown">
-            <a
-              href="#"
-              className="navbar-link dropdown-toggle"
-              data-bs-toggle="dropdown"
-              aria-expanded="false"
-            >
-              Pages
-            </a>
-            <div className="dropdown-menu m-0">
-              <a href="booking.html" className="dropdown-item">
-                Booking
-              </a>
-              <a href="team.html" className="dropdown-item">
-                Our Team
-              </a>
-              <a href="testimonial.html" className="dropdown-item">
-                Testimonial
-              </a>
-            </div>
-          </div>
-          <a href="contact.html" className="navbar-item navbar-link">
-            Contact
-          </a>
-        </div>
+      <div className={linksContainerClass} id="navbar-collapse">
+        <div className="navbar-links ml-auto py-0 pr-4">{linksElements}</div>
         <a href="" className="btn btn-primary py-2 px-4">
           Book A Table
         </a>
