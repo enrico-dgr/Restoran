@@ -1,4 +1,5 @@
 {
+  "extends": ["stylelint-config-prettier-scss"],
   "semi": false,
   "tabWidth": 2,
   "printWidth": 80,
@@ -7,5 +8,15 @@
   "bracketSpacing": true,
   "jsxBracketSameLine": false,
   "arrowParens": "avoid",
-  "endOfLine": "auto"
+  "endOfLine": "auto",
+  "overrides": [
+    {
+      "files": "*.scss",
+      "options": {
+        "singleQuote": false,
+        "printWidth": 100,
+        "trailingComma": "none"
+      }
+    }
+  ]
 }

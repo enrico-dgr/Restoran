@@ -1,0 +1,51 @@
+@use "sass:map";
+
+$containerSizes: (
+  xxl: (max-width: unset, ),
+);
+
+$containerSizesMW1200: map.merge($containerSizes,
+    (xxl: (max-width: 1140px)));
+
+$containerSizesMW1400: map.merge($containerSizes,
+    (xxl: (max-width: 1320px)));
+
+.container {
+  width: 100%;
+  padding-right: .75rem;
+  padding-left: .75rem;
+  margin-right: auto;
+  margin-left: auto;
+}
+
+
+@each $size, $pair in $containerSizes {
+  .container-#{$size} {
+    @extend .container;
+
+    @each $property, $value in $pair {
+      #{$property}: $value;
+    }
+  }
+}
+
+
+@media (min-width: 1200px) {
+  @each $size, $pair in $containerSizesMW1200 {
+    .container-#{$size} {
+      @each $property, $value in $pair {
+        #{$property}: $value;
+      }
+    }
+  }
+}
+
+@media (min-width: 1400px) {
+  @each $size, $pair in $containerSizesMW1400 {
+    .container-#{$size} {
+      @each $property, $value in $pair {
+        #{$property}: $value;
+      }
+    }
+  }
+}

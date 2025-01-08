@@ -1,24 +1,29 @@
+@use "./functions.scss" as f;
+@use "sass:map";
+
 // -----------
 // Colors
 // -----------
 $primary: #FEA116;
 $dark: #0F172B;
+$white: #fff;
 
 // Add colors here to use them in the project through derivations
 $colors: (
   primary: $primary,
   dark: $dark,
+  white: $white,
 );
 
 // Colors' derivations
 
 // This generate classes like ".text-primary" or ".bg-primary" ( we're emulating bootstrap classes )
 @each $name, $color in $colors {
-  .text-#{$name} {
+  .text-#{'' + $name} {
     color: $color;
   }
 
-  .bg-#{$name} {
+  .bg-#{'' + $name} {
     background-color: $color;
   }
 }
@@ -27,7 +32,7 @@ $colors: (
 // Margins and paddings with responsive variations
 // -----------
 
-$sizes: (
+$m_p_sizes: (
   0: 0,
   1: 4,
   2: 8,
@@ -37,37 +42,116 @@ $sizes: (
 );
 
 // default
-@each $size, $value in $sizes {
+@each $size, $value in $m_p_sizes {
   .p-#{$size} {
-    padding: pxToRem($value);
+    padding: f.pxToRem($value);
   }
 
   .py-#{$size} {
-    padding-top: pxToRem($value);
-    padding-bottom: pxToRem($value);
+    padding-top: f.pxToRem($value);
+    padding-bottom: f.pxToRem($value);
   }
 
   .px-#{$size} {
-    padding-left: pxToRem($value);
-    padding-right: pxToRem($value);
+    padding-left: f.pxToRem($value);
+    padding-right: f.pxToRem($value);
+  }
+
+  .m-#{$size} {
+    margin: f.pxToRem($value);
+  }
+
+  .mr-#{$size} {
+    margin-right: f.pxToRem($value);
+  }
+
+  .my-#{$size} {
+    margin-top: f.pxToRem($value);
+    margin-bottom: f.pxToRem($value);
+  }
+
+  .mx-#{$size} {
+    margin-left: f.pxToRem($value);
+    margin-right: f.pxToRem($value);
   }
 }
 
 // lg
 @media (min-width: 992px) {
-  @each $size, $value in $sizes {
+  @each $size, $value in $m_p_sizes {
     .p-lg-#{$size} {
-      padding: pxToRem($value);
+      padding: f.pxToRem($value);
     }
 
     .py-lg-#{$size} {
-      padding-top: pxToRem($value);
-      padding-bottom: pxToRem($value);
+      padding-top: f.pxToRem($value);
+      padding-bottom: f.pxToRem($value);
     }
 
     .px-lg-#{$size} {
-      padding-left: pxToRem($value);
-      padding-right: pxToRem($value);
+      padding-left: f.pxToRem($value);
+      padding-right: f.pxToRem($value);
+    }
+  }
+}
+
+// -----------
+// Relative width/height sizes
+// -----------
+
+$relative_sizes: (
+  100
+);
+
+@each $size in $relative_sizes {
+  .h-#{$size} {
+    height: #{$size + '%'};
+  }
+
+  .w-#{$size} {
+    width: #{$size + '%'};
+  }
+
+  .vh-#{$size} {
+    height: #{$size + 'vh'};
+  }
+
+  .vw-#{$size} {
+    width: #{$size + 'vw'};
+  }
+}
+
+// -----------
+// Text sizes
+// -----------
+
+$textSizes: (
+  3: (font-size: calc(f.pxToRem(24.4) + 3.3vw),
+    font-weight: 800,
+    line-height: 1.2,
+  ),
+);
+
+$textSizesMW1200: map.merge($textSizes,
+    (3: (font-size: f.pxToRem(64),
+      ),
+    ));
+
+@each $size, $pair in $textSizes {
+  .text-#{$size} {
+    @each $property, $value in $pair {
+      #{$property}: $value;
+    }
+  }
+}
+
+
+@media (min-width: 1200px) {
+  @each $size, $pair in $textSizesMW1200 {
+    .text-#{$size} {
+      @each $property, $value in $pair {
+        #{$property}: $value;
+      }
     }
   }
 }

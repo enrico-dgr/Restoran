@@ -1,9 +1,13 @@
-import Header from "../../components/Header/Header";
+import Header from '../../components/Header/Header'
+import HeaderBookATable from '../../components/Header/HeaderBookATable/HeaderBookATable'
+import './Home.scss'
 
 export default function Home() {
   return (
-    <div>
-      <Header />
-    </div>
+    <>
+      <Header>
+        <HeaderBookATable />
+      </Header>
+    </>
   )
 }

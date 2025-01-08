@@ -1,0 +1,16 @@
+@keyframes slide-in-left {
+  0% {
+    transform: translate(-100%, 0);
+    visibility: visible;
+  }
+
+  100% {
+    transform: translateX(0);
+  }
+}
+
+@keyframes full-rotation {
+  to {
+    transform: rotate(360deg);
+  }
+}

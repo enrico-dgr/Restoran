@@ -1,0 +1,28 @@
+@use "../../../styles/functions.scss" as f;
+
+.header__book-a-table {
+  display: flex;
+
+  >.item {
+    text-align: center;
+  }
+
+  .img {
+    max-width: 100%;
+    height: auto;
+    vertical-align: auto;
+    animation: full-rotation 50s linear infinite;
+  }
+}
+
+@media (min-width: 992px) {
+  .header__book-a-table {
+    display: flex;
+
+    >.item {
+      text-align: left;
+      flex: 0 0 auto;
+      width: 50%;
+    }
+  }
+}
