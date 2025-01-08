@@ -16,7 +16,7 @@ export default function ContentLoadingSpinner() {
 
   const spinnerWrapClass = useMemo(() => {
     let className =
-      'bg-white position-fixed translate-middle w-100 vh-100 top-50 start-50 d-flex align-items-center justify-content-center'
+      'bg-white w-100 vh-100'
 
     if (!contentLoaded) {
       className += ' show'
