@@ -15,7 +15,7 @@
     top: 0;
     background-color: v.$dark;
 
-    .navbar-links__container {
+    .navbar-link {
       padding: f.pxToRem(10.25) 0 !important;
     }
   }
@@ -45,8 +45,6 @@
       align-items: center;
       justify-content: center;
 
-      transition: .5s;
-
       &:not(.show) {
         display: none;
       }
@@ -61,7 +59,9 @@
     font-size: 15px;
     font-weight: 500;
     font-family: 'Heebo';
-    outline: none;
+
+    padding: 35px 0;
+
     transition: .5s;
 
     &.active {
@@ -71,6 +71,18 @@
 
   .dropdown {
     position: relative;
+
+    &.active {
+
+      >.navbar-link {
+        color: v.$primary;
+      }
+
+      .navbar-link.active {
+        background-color: v.$primary;
+        color: v.$white;
+      }
+    }
 
     &-toggle {
       &::after {

@@ -1,28 +1,33 @@
 @use "../../../styles/functions.scss" as f;
 
-.header__book-a-table {
+.header-breadcrumb {
   display: flex;
+  align-items: center;
+  justify-content: center;
 
-  >.item {
-    text-align: center;
-  }
+  margin-bottom: f.pxToRem(16);
 
-  .img {
-    max-width: 100%;
-    height: auto;
-    vertical-align: auto;
-    animation: full-rotation 50s linear infinite;
-  }
-}
+  list-style: none;
 
-@media (min-width: 992px) {
-  .header__book-a-table {
+  text-transform: uppercase;
+
+  &__container {
     display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+  }
 
-    >.item {
-      text-align: left;
-      flex: 0 0 auto;
-      width: 50%;
+  &__item {
+    &:not(:first-child) {
+      padding-left: f.pxToRem(8);
+
+      &::before {
+        color: rgba(255, 255, 255, .5);
+        content: "/";
+        float: left;
+        padding-right: f.pxToRem(8);
+      }
     }
   }
 }

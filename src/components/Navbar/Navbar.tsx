@@ -1,4 +1,4 @@
-import { Link, useLocation } from 'react-router-dom'
+import { Link } from 'react-router-dom'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faUtensils, faBars } from '@fortawesome/free-solid-svg-icons'
 import { useMemo, useState, useCallback } from 'react'
@@ -9,7 +9,6 @@ import useScrollThreshold from '../../hooks/useScrollThreshold/useScrollThreshol
 
 export default function Navbar() {
   const [showLinksContainer, setShowLinksContainer] = useState(false)
-  const location = useLocation()
   const isScrolled = useScrollThreshold(40)
 
   const links = useMemo<NavbarLink[]>(
@@ -61,7 +60,7 @@ export default function Navbar() {
   }, [])
 
   const linksContainerClass = useMemo(() => {
-    let classes = 'navbar-links__container py-4'
+    let classes = 'navbar-links__container'
 
     if (showLinksContainer) {
       classes += ' show'
@@ -70,26 +69,9 @@ export default function Navbar() {
     return classes
   }, [showLinksContainer])
 
-  const checkActive = useCallback(
-    (linkOrGroup: NavbarLink) => {
-      let active = false
-
-      if (linkOrGroup.group) {
-        active = linkOrGroup.links.findIndex(checkActive) !== -1
-      } else {
-        active = location.pathname === routes[linkOrGroup.name].absolutePath
-      }
-
-      return active
-    },
-    [location.pathname]
-  )
-
   const linksElements = useMemo(
     () =>
       links.map(linkOrGroup => {
-        const active = checkActive(linkOrGroup)
-
         return (
           <LinkOrGroup
             key={
@@ -98,11 +80,10 @@ export default function Navbar() {
                 : routes[linkOrGroup.name].absolutePath
             }
             link={linkOrGroup}
-            className={`navbar-item ${active ? 'active' : ''}`}
           />
         )
       }),
-    [checkActive, links]
+    [links]
   )
 
   return (

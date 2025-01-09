@@ -1,6 +1,6 @@
-import { Link } from 'react-router-dom'
+import { Link, useLocation } from 'react-router-dom'
 import routes from '../../routes'
-import { useMemo } from 'react'
+import { useCallback, useMemo } from 'react'
 
 export type NavbarLink =
   | {
@@ -15,7 +15,6 @@ export type NavbarLink =
     }
 
 export default function LinkOrGroup({
-  className,
   link,
   layer = 0,
 }: {
@@ -23,6 +22,28 @@ export default function LinkOrGroup({
   link: NavbarLink
   layer?: number
 }) {
+  const location = useLocation()
+
+  const checkActive = useCallback(
+    (linkOrGroup: NavbarLink) => {
+      let active = false
+
+      if (linkOrGroup.group) {
+        active = linkOrGroup.links.findIndex(checkActive) !== -1
+      } else {
+        active = location.pathname === routes[linkOrGroup.name].absolutePath
+      }
+
+      return active
+    },
+    [location.pathname]
+  )
+
+  const active = checkActive(link)
+
+  const classModifiers =
+    (layer === 0 ? 'navbar-item' : '') + (active ? ' active' : '')
+
   const links = useMemo(() => {
     if (!link.group) {
       return []
@@ -45,7 +66,7 @@ export default function LinkOrGroup({
     return (
       <Link
         to={routes[link.name].absolutePath}
-        className={`navbar-link text-white ${className ?? ''}`}
+        className={`navbar-link text-white ${classModifiers}`}
       >
         {publicName}
       </Link>
@@ -53,7 +74,7 @@ export default function LinkOrGroup({
   }
 
   return (
-    <div className={`dropdown ${className ?? ''}`}>
+    <div className={`dropdown ${classModifiers}`}>
       <span className="navbar-link text-white dropdown-toggle">
         {link.groupName}
       </span>

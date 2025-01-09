@@ -9,6 +9,17 @@
   }
 }
 
+@keyframes slide-in-down {
+  0% {
+    transform: translate(0, -100%);
+    visibility: visible;
+  }
+
+  100% {
+    transform: translateY(0);
+  }
+}
+
 @keyframes full-rotation {
   to {
     transform: rotate(360deg);
