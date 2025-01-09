@@ -17,7 +17,7 @@ export default function HeaderBookATable() {
           </p>
           <a
             href=""
-            className="btn btn-primary py-sm-3 px-sm-5 me-3 slideInLeft"
+            className="btn btn-primary py-sm-3 px-sm-5 mr-3 slideInLeft"
           >
             Book A Table
           </a>

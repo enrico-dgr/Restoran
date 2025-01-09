@@ -2,12 +2,9 @@
 
 .header__book-a-table {
   display: flex;
-  align-items: center;
-  margin: 0 -24px;
 
   >.item {
     text-align: center;
-    padding: 0 f.pxToRem(24);
   }
 
   .img {

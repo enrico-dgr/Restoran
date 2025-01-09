@@ -10,6 +10,16 @@
   padding-top: f.pxToRem(8);
   padding-bottom: f.pxToRem(8);
 
+  &.fixed {
+    position: fixed;
+    top: 0;
+    background-color: v.$dark;
+
+    .navbar-links__container {
+      padding: f.pxToRem(10.25) 0 !important;
+    }
+  }
+
   &-toggler {
     color: rgba(white, 0.55);
     background-color: transparent;
@@ -27,9 +37,16 @@
     align-items: center;
     justify-content: center;
 
-    gap: 35px;
+    gap: 25px;
 
     &__container {
+      flex-grow: 1;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+
+      transition: .5s;
+
       &:not(.show) {
         display: none;
       }
@@ -44,7 +61,6 @@
     font-size: 15px;
     font-weight: 500;
     font-family: 'Heebo';
-    padding: 35px 0;
     outline: none;
     transition: .5s;
 
@@ -107,7 +123,7 @@
     top: 0;
     left: 0;
     z-index: 999;
-    background: transparent !important;
+    background: transparent;
 
     &-toggler {
       display: none;

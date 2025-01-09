@@ -15,6 +15,11 @@ $colors: (
   white: $white,
 );
 
+$colorsCombinations: (
+  primary: ( first: $primary, second: $white ),
+  dark: (first: $dark, second: $primary ),
+);
+
 // Colors' derivations
 
 // This generate classes like ".text-primary" or ".bg-primary" ( we're emulating bootstrap classes )
@@ -25,6 +30,21 @@ $colors: (
 
   .bg-#{'' + $name} {
     background-color: $color;
+  }
+}
+
+// This generate classes like ".btn-primary" or ".btn-primary-invert" ( we're emulating bootstrap classes )
+@each $name, $combination in $colorsCombinations {
+  .btn-#{'' + $name} {
+    color: map.get($combination, second);
+    background-color: map.get($combination, first);
+    border-color: map.get($combination, first);
+  }
+
+  .btn-#{'' + $name}-invert {
+    color: map.get($combination, first);
+    background-color: map.get($combination, second);
+    border-color: map.get($combination, second);
   }
 }
 
@@ -39,53 +59,88 @@ $m_p_sizes: (
   2: f.pxToRem(8),
   3: f.pxToRem(16),
   4: f.pxToRem(24),
-  5: f.pxToRem(32)
+  5: f.pxToRem(48)
 );
 
 // default
 @each $size, $value in $m_p_sizes {
   .p-#{$size} {
-    padding: $value;
+    padding: $value !important;
   }
 
   .pl-#{$size} {
-    padding-left: $value;
+    padding-left: $value !important;
   }
 
   .pr-#{$size} {
-    padding-right: $value;
+    padding-right: $value !important;
+  }
+
+  .pt-#{$size} {
+    padding-top: $value !important;
+  }
+
+  .pb-#{$size} {
+    padding-bottom: $value !important;
   }
 
   .py-#{$size} {
     padding-top: $value;
-    padding-bottom: $value;
+    padding-bottom: $value !important;
   }
 
   .px-#{$size} {
-    padding-left: $value;
-    padding-right: $value;
+    padding-left: $value !important;
+    padding-right: $value !important;
   }
 
   .m-#{$size} {
-    margin: $value;
+    margin: $value !important;
   }
 
   .ml-#{$size} {
-    margin-left: $value;
+    margin-left: $value !important;
   }
 
   .mr-#{$size} {
-    margin-right: $value;
+    margin-right: $value !important;
+  }
+
+  .mt-#{$size} {
+    margin-top: $value !important;
+  }
+
+  .mb-#{$size} {
+    margin-bottom: $value !important;
   }
 
   .my-#{$size} {
-    margin-top: $value;
-    margin-bottom: $value;
+    margin-top: $value !important;
+    margin-bottom: $value !important;
   }
 
   .mx-#{$size} {
-    margin-left: $value;
-    margin-right: $value;
+    margin-left: $value !important;
+    margin-right: $value !important;
+  }
+}
+
+// sm
+@media (min-width: 576px) {
+  @each $size, $value in $m_p_sizes {
+    .p-sm-#{$size} {
+      padding: $value !important;
+    }
+
+    .py-sm-#{$size} {
+      padding-top: $value !important;
+      padding-bottom: $value !important;
+    }
+
+    .px-sm-#{$size} {
+      padding-left: $value !important;
+      padding-right: $value !important;
+    }
   }
 }
 
@@ -93,17 +148,17 @@ $m_p_sizes: (
 @media (min-width: 992px) {
   @each $size, $value in $m_p_sizes {
     .p-lg-#{$size} {
-      padding: $value;
+      padding: $value !important;
     }
 
     .py-lg-#{$size} {
-      padding-top: $value;
-      padding-bottom: $value;
+      padding-top: $value !important;
+      padding-bottom: $value !important;
     }
 
     .px-lg-#{$size} {
-      padding-left: $value;
-      padding-right: $value;
+      padding-left: $value !important;
+      padding-right: $value !important;
     }
   }
 }

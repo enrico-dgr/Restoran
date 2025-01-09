@@ -1,6 +1,13 @@
 @font-face {
   font-family: 'Nunito';
   font-style: normal;
+  font-weight: 500;
+  src: url(../fonts/Nunito/Nunito-Medium.ttf) format('truetype');
+}
+
+@font-face {
+  font-family: 'Nunito';
+  font-style: normal;
   font-weight: 800;
   src: url(../fonts/Nunito/Nunito-ExtraBold.ttf) format('truetype');
 }

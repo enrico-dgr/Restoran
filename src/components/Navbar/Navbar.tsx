@@ -1,14 +1,16 @@
 import { Link, useLocation } from 'react-router-dom'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faUtensils, faBars } from '@fortawesome/free-solid-svg-icons'
-import './Navbar.scss'
 import { useMemo, useState, useCallback } from 'react'
 import routes from '../../routes'
 import LinkOrGroup, { NavbarLink } from './LinkOrGroup'
+import './Navbar.scss'
+import useScrollThreshold from '../../hooks/useScrollThreshold/useScrollThreshold'
 
 export default function Navbar() {
   const [showLinksContainer, setShowLinksContainer] = useState(false)
-  const location = useLocation();
+  const location = useLocation()
+  const isScrolled = useScrollThreshold(40)
 
   const links = useMemo<NavbarLink[]>(
     () => [
@@ -59,7 +61,7 @@ export default function Navbar() {
   }, [])
 
   const linksContainerClass = useMemo(() => {
-    let classes = 'navbar-links__container'
+    let classes = 'navbar-links__container py-4'
 
     if (showLinksContainer) {
       classes += ' show'
@@ -104,7 +106,12 @@ export default function Navbar() {
   )
 
   return (
-    <nav className="navbar bg-dark px-4 px-lg-5 py-3 py-lg-0">
+    <nav
+      className={
+        'navbar bg-dark px-4 px-lg-5 py-3 py-lg-0' +
+        (isScrolled ? ' fixed' : '')
+      }
+    >
       <Link className="navbar-brand" to="/">
         <h1 className="text-primary m-0">
           <FontAwesomeIcon icon={faUtensils} className="mr-3" />
@@ -115,7 +122,7 @@ export default function Navbar() {
         <FontAwesomeIcon icon={faBars} />
       </button>
       <div className={linksContainerClass} id="navbar-collapse">
-        <div className="navbar-links ml-auto py-0 pr-4">{linksElements}</div>
+        <div className="navbar-links ml-auto pr-4">{linksElements}</div>
         <a href="" className="btn btn-primary py-2 px-4">
           Book A Table
         </a>
