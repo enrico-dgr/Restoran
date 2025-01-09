@@ -1,8 +1,8 @@
 const routes = {
   home: {
-    name: 'home',
+    name: 'index',
     publicName: 'Home',
-    absolutePath: '/',
+    absolutePath: '/index',
   },
   about: {
     name: 'about',

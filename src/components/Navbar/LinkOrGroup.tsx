@@ -44,7 +44,7 @@ export default function LinkOrGroup({
 
     return (
       <Link
-        to={link.name}
+        to={routes[link.name].absolutePath}
         className={`navbar-link text-white ${className ?? ''}`}
       >
         {publicName}
