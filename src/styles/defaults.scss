@@ -12,6 +12,7 @@ body {
   font-size: 1rem;
   font-weight: 400;
   line-height: 1.5;
+  background-color: #F1F8FF;
   color: #666565;
 }
 
@@ -42,6 +43,10 @@ h6,
 
 h1 {
   font-size: calc(f.pxToRem(22) + 1.5vw);
+}
+
+h5 {
+  font-size: f.pxToRem(20);
 }
 
 @media (min-width: 1200px) {

@@ -4,7 +4,7 @@ export default {
   plugins: [
     purgecss({
       content: ['./src/**/*.html', './src/**/*.tsx'],
-      safelist: ['body'],
+      safelist: ['body', 'svg'],
     }),
   ],
 }
