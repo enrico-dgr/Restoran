@@ -5,7 +5,7 @@ $containerSizes: (
 );
 
 $containerSizesMW1200: map.merge($containerSizes,
-    (xxl: (max-width: 1140px)));
+    (xxl: ()));
 
 $containerSizesMW1400: map.merge($containerSizes,
     (xxl: (max-width: 1320px)));
@@ -21,7 +21,11 @@ $containerSizesMW1400: map.merge($containerSizes,
 
 @each $size, $pair in $containerSizes {
   .container-#{$size} {
-    @extend .container;
+    width: 100%;
+    padding-right: .75rem;
+    padding-left: .75rem;
+    margin-right: auto;
+    margin-left: auto;
 
     @each $property, $value in $pair {
       #{$property}: $value;
@@ -30,7 +34,29 @@ $containerSizesMW1400: map.merge($containerSizes,
 }
 
 
+@media (min-width: 576px) {
+  .container {
+    max-width: 540px;
+  }
+}
+
+@media (min-width: 768px) {
+  .container {
+    max-width: 720px;
+  }
+}
+
+@media (min-width: 992px) {
+  .container {
+    max-width: 960px;
+  }
+}
+
 @media (min-width: 1200px) {
+  .container {
+    max-width: 1140px;
+  }
+
   @each $size, $pair in $containerSizesMW1200 {
     .container-#{$size} {
       @each $property, $value in $pair {
@@ -41,6 +67,10 @@ $containerSizesMW1400: map.merge($containerSizes,
 }
 
 @media (min-width: 1400px) {
+  .container {
+    max-width: 1320px;
+  }
+
   @each $size, $pair in $containerSizesMW1400 {
     .container-#{$size} {
       @each $property, $value in $pair {

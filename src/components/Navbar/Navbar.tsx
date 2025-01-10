@@ -89,7 +89,7 @@ export default function Navbar() {
   return (
     <nav
       className={
-        'navbar bg-dark px-4 px-lg-5 py-3 py-lg-0' +
+        'navbar px-4 px-lg-5 py-3 py-lg-0' +
         (isScrolled ? ' fixed' : '')
       }
     >

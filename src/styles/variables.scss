@@ -16,7 +16,7 @@ $colors: (
 );
 
 $colorsCombinations: (
-  primary: ( first: $primary, second: $white ),
+  primary: (first: $primary, second: $white ),
   dark: (first: $dark, second: $primary ),
 );
 
@@ -198,10 +198,16 @@ $textSizes: (
     font-weight: 800,
     line-height: 1.2,
   ),
+  5: (font-size: calc(f.pxToRem(22.8) + 2.1vw),
+    font-weight: 800,
+    line-height: 1.2,
+  ),
 );
 
 $textSizesMW1200: map.merge($textSizes,
     (3: (font-size: f.pxToRem(64),
+      ),
+      5: (font-size: f.pxToRem(48),
       ),
     ));
 
