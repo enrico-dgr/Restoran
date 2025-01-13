@@ -1,4 +1,9 @@
 @use "sass:map";
+@use "./variables.scss" as v;
+
+// ---------------------------------------------------
+// Container
+// ---------------------------------------------------
 
 $containerSizes: (
   xxl: (max-width: unset, ),
@@ -77,5 +82,36 @@ $containerSizesMW1400: map.merge($containerSizes,
         #{$property}: $value;
       }
     }
+  }
+}
+
+// ---------------------------------------------------
+// Titles
+// ---------------------------------------------------
+
+.section-title {
+  color: v.$primary;
+  display: inline-block;
+  font-family: 'Pacifico', cursive;
+  font-weight: normal;
+
+  position: relative;
+
+  &.before::before,
+  &.after::after {
+    content: '';
+    position: absolute;
+    height: 2px;
+    width: 45px;
+    top: 50%;
+    background-color: v.$primary;
+  }
+
+  &::before {
+    right: calc(100% + 10px);
+  }
+
+  &::after {
+    left: calc(100% + 10px);
   }
 }

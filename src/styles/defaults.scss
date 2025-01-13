@@ -49,10 +49,18 @@ h5 {
   font-size: f.pxToRem(20);
 }
 
+h6 {
+  font-size: f.pxToRem(16);
+}
+
 @media (min-width: 1200px) {
   h1 {
     font-size: f.pxToRem(40);
   }
+}
+
+small {
+  font-size: f.pxToRem(14);
 }
 
 .btn {

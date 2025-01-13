@@ -1,22 +1,39 @@
 @use '../../../styles/animations.scss' as *;
+@use '../../../styles/functions.scss' as f;
 
 .cards-pros-group {
   display: flex;
-  gap: 24px;
+  flex-wrap: wrap;
 
-  padding: 0 12px;
+  margin: 0 auto;
+  padding: 0;
 
   .card-pros {
-    @extend .fadeInUp;
+    opacity: 0;
+
+    &.show {
+      @extend .fadeInUp;
+      opacity: 1;
+    }
 
     // each card will have a different delay of 0.2s from first to last
     // e.g. 0.1s, 0.3s, 0.5s, 0.7s ...
-    $numCards: 4;
+    @include f.staggered-animation-delay(4)
+  }
+}
 
-    @for $i from 1 through $numCards {
-      &:nth-child(#{$i}) {
-        animation-delay: #{0.1 + (0.2 * ($i - 1))}s;
-      }
+@media (min-width: 576px) {
+  .cards-pros-group {
+    .card-pros {
+      width: 50%;
+    }
+  }
+}
+
+@media (min-width: 992px) {
+  .cards-pros-group {
+    .card-pros {
+      width: 25%;
     }
   }
 }

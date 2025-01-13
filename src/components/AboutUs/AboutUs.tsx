@@ -1,18 +1,46 @@
 import { faUtensils } from '@fortawesome/free-solid-svg-icons'
 import './AboutUs.scss'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
+import Section from '../Section/Section'
+import useVisualized from '../../hooks/useVisualized/useVisualized'
+import { useSpring, motion, useTransform } from 'framer-motion'
+import { useEffect } from 'react'
+
+const Counter = ({ value }: { value: number }) => {
+  const animatedValue = useSpring(0, {
+    duration: 5000,
+    visualDuration: 5000,
+    bounce: -10,
+    damping: 65,
+    mass: 2,
+  })
+
+  const t = useTransform(animatedValue, latest => Math.round(latest))
+
+  useEffect(() => {
+    animatedValue.set(value)
+  }, [value, animatedValue])
+
+  return <motion.h1 className="text-5 text-primary mb-0">{t}</motion.h1>
+}
 
 export default function AboutUs() {
+  const { ref: refPhotos, visualized: photosVisualized } = useVisualized()
+  const { ref: refNumbers, visualized: numbersVisualized } = useVisualized()
+
   return (
-    <div className="container section-about-us">
-      <div className="photo-group">
-        <img src="../img/restaurant-1.png" alt="" />
-        <img src="../img/restaurant-2.png" alt="" />
-        <img src="../img/food-1.png" alt="" />
-        <img src="../img/food-2.png" alt="" />
+    <Section className="section-about-us">
+      <div
+        className={`photo-group ${photosVisualized ? 'show' : ''}`}
+        ref={refPhotos}
+      >
+        <img src="../img/restaurant-1.png" alt="Restaurant view" />
+        <img src="../img/restaurant-2.png" alt="Restaurant view" />
+        <img src="../img/food-1.png" alt="Dish" />
+        <img src="../img/food-2.png" alt="Dish" />
       </div>
-      <div className="description">
-        <h5 className="section-title text-primary">About Us</h5>
+      <div className="section-about-us__description">
+        <h5 className="section-title after">About Us</h5>
         <h1 className="mb-4">
           Welcome to{' '}
           <FontAwesomeIcon icon={faUtensils} className="text-primary mr-2" />
@@ -27,13 +55,10 @@ export default function AboutUs() {
           diam amet diam et eos. Clita erat ipsum et lorem et sit, sed stet
           lorem sit clita duo justo magna dolore erat amet
         </p>
-        <div className="numbers mb-4">
+        <div className="numbers mb-4" ref={refNumbers}>
           <div className="number">
-            <h1
-              className="text-5 text-primary mb-0"
-              data-toggle="counter-up"
-            >
-              15
+            <h1 className="text-5 text-primary mb-0">
+              {numbersVisualized ? <Counter value={15} /> : 0}
             </h1>
             <div className="pl-4">
               <p>Years of</p>
@@ -41,11 +66,8 @@ export default function AboutUs() {
             </div>
           </div>
           <div className="number">
-            <h1
-              className="text-5 text-primary mb-0"
-              data-toggle="counter-up"
-            >
-              50
+            <h1 className="text-5 text-primary mb-0">
+              {numbersVisualized ? <Counter value={50} /> : 0}
             </h1>
             <div className="pl-4">
               <p className="mb-0">Popular</p>
@@ -57,6 +79,6 @@ export default function AboutUs() {
           Read More
         </a>
       </div>
-    </div>
+    </Section>
   )
 }

@@ -9,6 +9,7 @@ import {
 
 import './Home.scss'
 import AboutUs from '../../components/AboutUs/AboutUs'
+import FoodMenu from '../../components/FoodMenu/FoodMenu'
 
 const defaultDescription =
   'Diam elitr kasd sed at elitr sed ipsum justo dolor sed clita amet diam'
@@ -17,35 +18,32 @@ export default function Home() {
   return (
     <>
       <Header pagination={false} />
-      <div className="container-xxl py-5">
-        <CardsProsContainer
-          cards={[
-            {
-              description: defaultDescription,
-              icon: faUserTie,
-              title: 'Master Chefs',
-            },
-            {
-              description: defaultDescription,
-              icon: faUtensils,
-              title: 'Quality Food',
-            },
-            {
-              description: defaultDescription,
-              icon: faCartPlus,
-              title: 'Online Order',
-            },
-            {
-              description: defaultDescription,
-              icon: faHeadset,
-              title: '24/7 Service',
-            },
-          ]}
-        />
-      </div>
-      <div className="container-xxl py-5">
-        <AboutUs />
-      </div>
+      <CardsProsContainer
+        cards={[
+          {
+            description: defaultDescription,
+            icon: faUserTie,
+            title: 'Master Chefs',
+          },
+          {
+            description: defaultDescription,
+            icon: faUtensils,
+            title: 'Quality Food',
+          },
+          {
+            description: defaultDescription,
+            icon: faCartPlus,
+            title: 'Online Order',
+          },
+          {
+            description: defaultDescription,
+            icon: faHeadset,
+            title: '24/7 Service',
+          },
+        ]}
+      />
+      <AboutUs />
+      <FoodMenu numberOfElements={8} />
     </>
   )
 }
