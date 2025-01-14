@@ -54,7 +54,7 @@ const byCategory = async ({
     headers: {
       'Content-Type': 'application/json',
     },
-  })
+  }).catch(() => ({ ok: false, json: () => [] }))
 
   if (response.ok) {
     meals.push(await response.json())

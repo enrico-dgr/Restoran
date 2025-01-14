@@ -126,7 +126,7 @@ export default function FoodMenu({
         menu.get
           .byCategory({
             category: mealType.category,
-            mockDelay: 3500,
+            mockDelay: 2000,
           })
           .then(meals => {
             addOrUpdateList(meals, mealType)
@@ -140,7 +140,7 @@ export default function FoodMenu({
 
   return (
     <Section
-      className={`food-menu ${visualized ? 'show fadeInUp' : ''}`}
+      className={`food-menu ${visualized ? 'show fadeIn' : ''}`}
       ref={ref}
     >
       <div className="food-menu__description">

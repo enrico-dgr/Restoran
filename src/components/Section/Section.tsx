@@ -7,12 +7,23 @@ import {
 
 type Props = PropsWithChildren<{
   className: string
+  containerClassName?: string
 }>
 
 const Section: ForwardRefRenderFunction<HTMLDivElement, Props> = (
-  { className, children },
+  { className, children, containerClassName },
   ref
 ) => {
+  const classNameOuterDiv = useMemo(() => {
+    let classes = 'container-xxl py-5'
+
+    if (containerClassName) {
+      classes += ' ' + containerClassName
+    }
+
+    return classes
+  }, [containerClassName])
+
   const classNameDiv = useMemo(() => {
     let classes = 'container'
 
@@ -24,7 +35,7 @@ const Section: ForwardRefRenderFunction<HTMLDivElement, Props> = (
   }, [className])
 
   return (
-    <div ref={ref} className="container-xxl py-5">
+    <div ref={ref} className={classNameOuterDiv}>
       <div className={classNameDiv}>{children}</div>
     </div>
   )

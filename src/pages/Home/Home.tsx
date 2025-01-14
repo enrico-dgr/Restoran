@@ -10,6 +10,7 @@ import {
 import './Home.scss'
 import AboutUs from '../../components/AboutUs/AboutUs'
 import FoodMenu from '../../components/FoodMenu/FoodMenu'
+import Reservation from '../../components/Reservation/Reservation'
 
 const defaultDescription =
   'Diam elitr kasd sed at elitr sed ipsum justo dolor sed clita amet diam'
@@ -44,6 +45,7 @@ export default function Home() {
       />
       <AboutUs />
       <FoodMenu numberOfElements={8} />
+      <Reservation />
     </>
   )
 }

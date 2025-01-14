@@ -8,12 +8,22 @@
 }
 
 body {
+  background-color: #F1F8FF;
+  color: #666565;
+
+  &.no-scroll {
+    overflow: hidden;
+  }
+}
+
+body,
+input,
+select,
+textarea {
   font-family: "Heebo", sans-serif;
   font-size: 1rem;
   font-weight: 400;
   line-height: 1.5;
-  background-color: #F1F8FF;
-  color: #666565;
 }
 
 a {
