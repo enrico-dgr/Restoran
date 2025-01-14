@@ -3,14 +3,14 @@ export default function MealPlaceholder() {
     <li className="meal-placeholder">
       <div className="img"></div>
       <div className="meal-placeholder__description">
-        <div className="name">
+        <h5 className="name">
           <span></span>
           <span></span>
-        </div>
-        <div className="description">
+        </h5>
+        <small className="description">
           <span></span>
           <span></span>
-        </div>
+        </small>
       </div>
     </li>
   )

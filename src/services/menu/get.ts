@@ -1,34 +1,38 @@
 import constants from '../../constants'
+import { delay } from '../../utils/promises'
 import { MenuItem } from './types'
 
 const numMocks = 20
 
-const mockSalads: MenuItem[] = new Array(numMocks).map((_, index) => ({
+const mockSalads: MenuItem[] = Array.from({ length: numMocks }, (_, index) => ({
   id: index,
   name: 'Salad',
   toppings: ['Tomato', 'Cheese', 'Mushrooms'],
-  price: 15,
-  image: 'https://via.placeholder.com/150',
+  price: '$15',
+  image: 'https://placehold.co/80',
   category: 'breakfast',
 }))
 
-const mockPizzas: MenuItem[] = new Array(numMocks).map((_, index) => ({
+const mockPizzas: MenuItem[] = Array.from({ length: numMocks }, (_, index) => ({
   id: index,
   name: 'Pizza',
   toppings: ['Tomato', 'Cheese', 'Neapolitan broccoli'],
-  price: 15,
-  image: 'https://via.placeholder.com/150',
+  price: '$15',
+  image: 'https://placehold.co/80',
   category: 'launch',
 }))
 
-const mockBurgers: MenuItem[] = new Array(numMocks).map((_, index) => ({
-  id: index,
-  name: 'Burger',
-  toppings: ['Eggs', 'Cheese', 'Mayonnaise'],
-  price: 15,
-  image: 'https://via.placeholder.com/150',
-  category: 'dinner',
-}))
+const mockBurgers: MenuItem[] = Array.from(
+  { length: numMocks },
+  (_, index) => ({
+    id: index,
+    name: 'Burger',
+    toppings: ['Eggs', 'Cheese', 'Mayonnaise'],
+    price: '$15',
+    image: 'https://placehold.co/80',
+    category: 'dinner',
+  })
+)
 
 const mockMenu: MenuItem[] = [...mockSalads, ...mockPizzas, ...mockBurgers]
 
@@ -41,7 +45,7 @@ const byCategory = async ({
    * If set and on bad response, a mock will be returned
    * instead of the error ( after the given delay ).
    */
-  mockDelay: number
+  mockDelay?: number
 }): Promise<MenuItem[]> => {
   const meals: MenuItem[] = []
 
@@ -55,9 +59,8 @@ const byCategory = async ({
   if (response.ok) {
     meals.push(await response.json())
   } else if (mockDelay) {
-    setTimeout(() => {
-      meals.push(...mockMenu.filter(({ category: c }) => c === category))
-    }, mockDelay)
+    await delay(mockDelay)
+    meals.push(...mockMenu.filter(({ category: c }) => c === category))
   }
 
   return meals

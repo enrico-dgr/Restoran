@@ -43,12 +43,32 @@ $pxGap: 24;
     width: 100%;
 
     &-list {
-      display: flex;
+      display: none;
       flex-wrap: wrap;
       list-style: none;
       padding: 0;
       column-gap: f.pxToRem($pxGap);
+      opacity: 0;
+
+      animation-duration: 0.35s;
+      animation-timing-function: ease-in;
+
+      &.active {
+        display: flex;
+        animation-name: op;
+        opacity: 1;
+      }
     }
+  }
+}
+
+@keyframes op {
+  0% {
+    opacity: 0;
+  }
+
+  100% {
+    opacity: 1;
   }
 }
 

@@ -6,20 +6,19 @@ import Section from '../../Section/Section'
 function AnimatedCard(props: CardProsProps) {
   const { ref, visualized } = useVisualized()
 
-  return (
-    <CardPros {...props} ref={ref} className={visualized ? 'show' : ''} />
-  )
+  return <CardPros {...props} ref={ref} className={visualized ? 'show' : ''} />
 }
 
-export default function CardsProsContainer({
-  cards,
-}: {
-  cards: CardProsProps[]
-}) {
+export default function CardsProsGroup({ cards }: { cards: CardProsProps[] }) {
   return (
     <Section className={'cards-pros-group'}>
-      {cards.map(({ description, icon, title }) => (
-        <AnimatedCard description={description} icon={icon} title={title} />
+      {cards.map(({ description, icon, title }, i) => (
+        <AnimatedCard
+          key={`card-pros_${title}_${i}`}
+          description={description}
+          icon={icon}
+          title={title}
+        />
       ))}
     </Section>
   )

@@ -6,7 +6,13 @@ import useVisualized from '../../hooks/useVisualized/useVisualized'
 import { useSpring, motion, useTransform } from 'framer-motion'
 import { useEffect } from 'react'
 
-const Counter = ({ value }: { value: number }) => {
+const Counter = ({
+  value,
+  className,
+}: {
+  value: number
+  className?: string
+}) => {
   const animatedValue = useSpring(0, {
     duration: 5000,
     visualDuration: 5000,
@@ -21,7 +27,7 @@ const Counter = ({ value }: { value: number }) => {
     animatedValue.set(value)
   }, [value, animatedValue])
 
-  return <motion.h1 className="text-5 text-primary mb-0">{t}</motion.h1>
+  return <motion.h1 className={className}>{t}</motion.h1>
 }
 
 export default function AboutUs() {
@@ -57,18 +63,23 @@ export default function AboutUs() {
         </p>
         <div className="numbers mb-4" ref={refNumbers}>
           <div className="number">
-            <h1 className="text-5 text-primary mb-0">
-              {numbersVisualized ? <Counter value={15} /> : 0}
-            </h1>
+            {numbersVisualized ? (
+              <Counter className="text-5 text-primary mb-0" value={15} />
+            ) : (
+              <h1 className="text-5 text-primary mb-0">0</h1>
+            )}
+
             <div className="pl-4">
               <p>Years of</p>
               <h6 className="text-uppercase mb-0">Experience</h6>
             </div>
           </div>
           <div className="number">
-            <h1 className="text-5 text-primary mb-0">
-              {numbersVisualized ? <Counter value={50} /> : 0}
-            </h1>
+            {numbersVisualized ? (
+              <Counter className="text-5 text-primary mb-0" value={50} />
+            ) : (
+              <h1 className="text-5 text-primary mb-0">0</h1>
+            )}
             <div className="pl-4">
               <p className="mb-0">Popular</p>
               <h6 className="text-uppercase mb-0">Master Chefs</h6>

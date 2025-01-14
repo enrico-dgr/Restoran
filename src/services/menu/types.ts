@@ -4,5 +4,5 @@ export interface MenuItem {
   name: string
   image: string
   toppings: string[]
-  price: number
+  price: string
 }

@@ -20,6 +20,16 @@
   }
 }
 
+@keyframes fade-in {
+  0% {
+    opacity: 0;
+  }
+
+  100% {
+    opacity: 1;
+  }
+}
+
 @keyframes fade-in-up {
   0% {
     transform: translate3d(0, 100%, 0);
@@ -46,5 +56,11 @@
 
   50% {
     opacity: 1;
+  }
+}
+
+@keyframes shimmer {
+  100% {
+    transform: translateX(100%);
   }
 }

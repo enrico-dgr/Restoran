@@ -7,14 +7,16 @@ export default function MealType({
   icon,
   name,
   description,
+  onClick,
 }: {
   active?: boolean
   icon: IconDefinition
   description: string
   name: string
+  onClick: () => void
 }) {
   return (
-    <li className={`meal-type ${active ? 'active' : ''}`}>
+    <li className={`meal-type ${active ? 'active' : ''}`} onClick={onClick}>
       <FontAwesomeIcon icon={icon} className="text-primary" size="2x" />
       <div className="meal-type__description">
         <small>{description}</small>
