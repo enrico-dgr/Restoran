@@ -1,14 +1,27 @@
 @use '../../../styles/animations.scss' as *;
 @use '../../../styles/functions.scss' as f;
 
-.cards-pros-group {
+.cards-team {
   display: flex;
+  flex-direction: column;
   flex-wrap: wrap;
 
   margin: 0 auto;
   padding: 0;
 
-  .card-pros {
+  &__header {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+
+  &__content {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+  }
+
+  .card {
     opacity: 0;
 
     &.show {
@@ -22,17 +35,17 @@
   }
 }
 
-@media (min-width: 576px) {
-  .cards-pros-group {
-    .card-pros {
+@media (min-width: 768px) {
+  .cards-team {
+    .card {
       width: 50%;
     }
   }
 }
 
 @media (min-width: 992px) {
-  .cards-pros-group {
-    .card-pros {
+  .cards-team {
+    .card {
       width: 25%;
     }
   }

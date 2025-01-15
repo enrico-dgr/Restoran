@@ -1,0 +1,53 @@
+@use "../../styles/variables.scss" as v;
+@use "../../styles/functions.scss" as f;
+
+.testimonial {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  padding: f.pxToRem(24);
+  gap: f.pxToRem(20);
+  border: 1px solid v.$separatorsGray;
+
+  transition: .5s;
+  overflow: hidden;
+
+  &.active {
+    background-color: v.$primary;
+
+    svg,
+    h5,
+    p {
+      color: v.$white;
+    }
+  }
+
+  svg {
+    color: v.$primary;
+  }
+
+  .user {
+    display: flex;
+    gap: f.pxToRem(20);
+  }
+
+  .info {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+  }
+
+  .img {
+    height: 50px;
+    width: 50px;
+    aspect-ratio: 1;
+    border-radius: 50%;
+    overflow: hidden;
+
+    img {
+      width: 100%;
+      aspect-ratio: 1;
+      transition: .5s;
+    }
+  }
+}
