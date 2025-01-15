@@ -10,14 +10,16 @@
 .section-reservation {
   display: flex;
   flex-wrap: wrap;
-  align-items: center;
+  align-items: stretch;
   position: relative;
   margin: 0;
   min-width: 100%;
+  opacity: 0;
 
   .video {
     position: relative;
     min-height: 500px;
+    height: auto;
     width: 100%;
     background: linear-gradient(rgba(15, 23, 43, .1), rgba(15, 23, 43, .1)), url(../img/video.png);
     background-position: center center;
@@ -86,6 +88,9 @@
   .form-container {
     background-color: v.$dark;
 
+    > :first-child {
+      opacity: 0;
+    }
   }
 
   form {
@@ -95,10 +100,10 @@
 
     >* {
       position: relative;
-      width: calc(50% - f.pxToRem(8));
+      width: 100%;
     }
 
-    >.date {
+    .date {
       >* {
         width: 100%;
       }
@@ -167,8 +172,6 @@
 
       transform-origin: 0 0;
       transition: opacity 0.1s ease-in-out, transform 0.1s ease-in-out;
-
-      &.active {}
     }
 
     select+label,
@@ -240,13 +243,15 @@
 
 @media (min-width: 768px) {
   .section-reservation {
-    .video {
-      height: 529px;
-    }
-
     >* {
       width: 50% !important;
       min-width: unset;
+    }
+
+    form {
+      >* {
+        width: calc(50% - f.pxToRem(8));
+      }
     }
   }
 }

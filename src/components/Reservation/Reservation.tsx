@@ -7,10 +7,11 @@ import { faClose } from '@fortawesome/free-solid-svg-icons'
 import ReactDatePicker from 'react-datepicker'
 
 const videoUrl =
-  'https://www.youtube.com/embed/DWRcNpR6Kdc?autoplay=1&modestbranding=1&showinfo=0'
+  'https://www.youtube.com/embed/C3psWoyNzJ4?autoplay=1&modestbranding=1&showinfo=0'
 
 export default function Reservation() {
-  const { ref, visualized } = useVisualized()
+  const { ref: refContainer, visualized: visualizedContainer } = useVisualized()
+  const { ref: refForm, visualized: visualizedForm } = useVisualized()
 
   const [showModal, setShowModal] = useState(false)
   const [startDate, setStartDate] = useState<Date | null>(null)
@@ -27,9 +28,11 @@ export default function Reservation() {
   return (
     <>
       <Section
-        className={`section-reservation px-0 ${visualized ? 'fadeInUp' : ''}`}
+        className={`section-reservation px-0 ${
+          visualizedContainer ? 'fadeInUp' : ''
+        }`}
         containerClassName="px-0"
-        ref={ref}
+        ref={refContainer}
       >
         <div className="video">
           <button
@@ -40,69 +43,62 @@ export default function Reservation() {
             <span></span>
           </button>
         </div>
-        <div className="form-container p-5 fadeInUp">
-          <h5 className="section-title after text-primary">Reservation</h5>
-          <h1 className="text-white mb-4">Book A Table Online</h1>
-          <form>
-            <div className="name">
-              <input type="text" id="name" placeholder="Your Name" />
-              <label htmlFor="name">Your Name</label>
-            </div>
-            <div className="email">
-              <input type="email" id="email" placeholder="Your Email" />
-              <label htmlFor="email">Your Email</label>
-            </div>
-            <div className="date">
-              <ReactDatePicker
-                selected={startDate}
-                onChange={date => setStartDate(date)}
-                onFocus={() => setDateInputFocused(true)}
-                onBlur={() => setDateInputFocused(false)}
-                showTimeSelect
-                dateFormat="MMMM d, yyyy h:mm aa"
-                className="date"
-                id="datetime"
-                placeholderText="Date & Time"
-              ></ReactDatePicker>
-              <label
-                className={startDate || dateInputFocused ? 'in-use' : ''}
-                htmlFor="datetime"
-              >
-                Date &amp; Time
-              </label>
-            </div>
-            {/* <div className="date">
-              <input
-                type="text"
-                className="form-control datetimepicker-input"
-                id="datetime"
-                placeholder="Date & Time"
-                data-toggle="datetimepicker"
-              />
-              <label className={startDate ? 'in-use' : ''} htmlFor="datetime">
-                Date &amp; Time
-              </label>
-            </div> */}
-            <div className="number">
-              <select id="select1">
-                <option value="1">1</option>
-                <option value="2">2</option>
-                <option value="3">3</option>
-                <option value="4">4</option>
-                <option value="5">5</option>
-              </select>
-              <label htmlFor="select1">No Of People</label>
-            </div>
-            <div className="message">
-              <textarea placeholder="Special Request" id="message"></textarea>
-              <label htmlFor="message">Special Request</label>
-            </div>
-            <div className="confirm">
-              <button className="btn btn-primary w-100 py-3" type="submit">
-                Book Now
-              </button>
-            </div>
-          </form>
+        <div className={`form-container p-5`}>
+          <div
+            className={visualizedForm ? 'fadeInUp' : ''}
+            ref={refForm}
+          >
+            <h5 className="section-title after text-primary">Reservation</h5>
+            <h1 className="text-white mb-4">Book A Table Online</h1>
+            <form>
+              <div className="name">
+                <input type="text" id="name" placeholder="Your Name" />
+                <label htmlFor="name">Your Name</label>
+              </div>
+              <div className="email">
+                <input type="email" id="email" placeholder="Your Email" />
+                <label htmlFor="email">Your Email</label>
+              </div>
+              <div className="date">
+                <ReactDatePicker
+                  selected={startDate}
+                  onChange={date => setStartDate(date)}
+                  onFocus={() => setDateInputFocused(true)}
+                  onBlur={() => setDateInputFocused(false)}
+                  showTimeSelect
+                  dateFormat="MMMM d, yyyy h:mm aa"
+                  className="date"
+                  id="datetime"
+                  placeholderText="Date & Time"
+                ></ReactDatePicker>
+                <label
+                  className={startDate || dateInputFocused ? 'in-use' : ''}
+                  htmlFor="datetime"
+                >
+                  Date &amp; Time
+                </label>
+              </div>
+              <div className="number">
+                <select id="select1">
+                  <option value="1">1</option>
+                  <option value="2">2</option>
+                  <option value="3">3</option>
+                  <option value="4">4</option>
+                  <option value="5">5</option>
+                </select>
+                <label htmlFor="select1">No Of People</label>
+              </div>
+              <div className="message">
+                <textarea placeholder="Special Request" id="message"></textarea>
+                <label htmlFor="message">Special Request</label>
+              </div>
+              <div className="confirm">
+                <button className="btn btn-primary w-100 py-3" type="submit">
+                  Book Now
+                </button>
+              </div>
+            </form>
+          </div>
         </div>
       </Section>
       <div className={`reservation-modal ${showModal ? 'show' : ''}`}>

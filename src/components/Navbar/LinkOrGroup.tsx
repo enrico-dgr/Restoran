@@ -1,6 +1,6 @@
 import { Link, useLocation } from 'react-router-dom'
 import routes from '../../routes'
-import { useCallback, useMemo } from 'react'
+import { useCallback, useEffect, useMemo, useRef, useState } from 'react'
 
 export type NavbarLink =
   | {
@@ -22,6 +22,33 @@ export default function LinkOrGroup({
   link: NavbarLink
   layer?: number
 }) {
+  const [show, setShow] = useState(false)
+  const ref = useRef<HTMLDivElement>(null);
+
+  useEffect(() => {
+    const clickOutDetect = (e: TouchEvent) => {
+      const touch = e.changedTouches[0]
+      const element = document.elementFromPoint(
+        touch.clientX,
+        touch.clientY
+      ) as HTMLElement | null
+
+      let tappedOut = false
+
+      if (element && ref.current) {
+        tappedOut = !ref.current.contains(element)
+      }
+
+      setShow(s => tappedOut ? false : s)
+    }
+
+    document.addEventListener('touchend', clickOutDetect)
+
+    return () => {
+      document.removeEventListener('touchend', clickOutDetect)
+    }
+  }, [])
+
   const location = useLocation()
 
   const checkActive = useCallback(
@@ -74,7 +101,11 @@ export default function LinkOrGroup({
   }
 
   return (
-    <div className={`dropdown ${classModifiers}`}>
+    <div
+      className={`dropdown ${classModifiers} ${show ? 'show' : ''}`}
+      onClick={() => setShow(s => !s)}
+      ref={ref}
+    >
       <span className="navbar-link text-white dropdown-toggle">
         {link.groupName}
       </span>

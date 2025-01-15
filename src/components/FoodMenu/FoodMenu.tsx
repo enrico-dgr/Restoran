@@ -140,7 +140,7 @@ export default function FoodMenu({
 
   return (
     <Section
-      className={`food-menu ${visualized ? 'show fadeIn' : ''}`}
+      className={`food-menu ${visualized ? 'show fadeInUp' : ''}`}
       ref={ref}
     >
       <div className="food-menu__description">

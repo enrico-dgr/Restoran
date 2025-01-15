@@ -103,7 +103,7 @@ export default function Navbar() {
         <FontAwesomeIcon icon={faBars} />
       </button>
       <div className={linksContainerClass} id="navbar-collapse">
-        <div className="navbar-links ml-auto pr-4">{linksElements}</div>
+        <div className="navbar-links pr-4">{linksElements}</div>
         <a href="" className="btn btn-primary py-2 px-4">
           Book A Table
         </a>
