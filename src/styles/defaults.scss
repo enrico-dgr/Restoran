@@ -55,6 +55,10 @@ h1 {
   font-size: calc(f.pxToRem(22) + 1.5vw);
 }
 
+h4 {
+  font-size: calc(1.275rem + .3vw);
+}
+
 h5 {
   font-size: f.pxToRem(20);
 }

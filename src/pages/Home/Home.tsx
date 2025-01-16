@@ -13,6 +13,7 @@ import FoodMenu from '../../components/FoodMenu/FoodMenu'
 import Reservation from '../../components/Reservation/Reservation'
 import CardsTeam from '../../components/Cards/CardsTeam/CardsTeam'
 import Testimonials from '../../components/Testimonials/Testimonials'
+import Footer from '../../components/Footer/Footer'
 
 const defaultDescription =
   'Diam elitr kasd sed at elitr sed ipsum justo dolor sed clita amet diam'
@@ -85,6 +86,7 @@ export default function Home() {
         ]}
       />
       <Testimonials />
+      <Footer />
     </>
   )
 }
