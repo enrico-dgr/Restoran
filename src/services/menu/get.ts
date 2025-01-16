@@ -49,7 +49,7 @@ const byCategory = async ({
 }): Promise<MenuItem[]> => {
   const meals: MenuItem[] = []
 
-  const response = await fetch(constants.API.menu + category, {
+  const response = await fetch(constants.API.menu + `?category=${category}`, {
     method: 'GET',
     headers: {
       'Content-Type': 'application/json',
@@ -57,7 +57,7 @@ const byCategory = async ({
   }).catch(() => ({ ok: false, json: () => [] }))
 
   if (response.ok) {
-    meals.push(await response.json())
+    meals.push(...(await response.json()))
   } else if (mockDelay) {
     await delay(mockDelay)
     meals.push(...mockMenu.filter(({ category: c }) => c === category))
