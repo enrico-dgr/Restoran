@@ -35,7 +35,7 @@ export default function ScrollUpButton() {
   return (
     <button
       className={
-        'btn btn-lg btn-primary btn-lg-square scroll-up-btn' +
+        'btn btn-primary scroll-up-btn' +
         (isScrolled ? ' show' : '')
       }
       onClick={scrollUp}
