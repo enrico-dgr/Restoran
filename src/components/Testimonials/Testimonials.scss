@@ -22,7 +22,6 @@
   }
 
   &__content {
-    height: 265px;
     width: 100%;
   }
 
@@ -32,7 +31,9 @@
     }
 
     &-pagination {
-      top: calc(100% - 18px);
+      position: relative;
+      top: unset;
+      margin-top: f.pxToRem(24);
 
       &-bullet {
         height: 15px;

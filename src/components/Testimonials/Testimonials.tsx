@@ -60,9 +60,17 @@ export default function Testimonials() {
         loop={true}
         spaceBetween={24}
         speed={800}
-        slidesPerView={3}
+        slidesPerView={1}
+        breakpoints={{
+          768: {
+            slidesPerView: 2,
+          },
+          992: {
+            slidesPerView: 3,
+          },
+        }}
         onSlideChange={swiper => {
-          setActiveIndex(swiper.activeIndex)
+          setActiveIndex(swiper.realIndex)
         }}
       >
         {testimonials.map(({ name, ...props }, i) => (
@@ -70,7 +78,7 @@ export default function Testimonials() {
             <Testimonial
               name={name}
               {...props}
-              className={activeIndex - 1 === i ? 'active' : ''}
+              className={activeIndex === i ? 'active' : ''}
             />
           </SwiperSlide>
         ))}
