@@ -11,17 +11,13 @@ export default function ScrollUpButton() {
     React.MouseEventHandler<HTMLButtonElement>
   >(() => {
     const initialTop = document.documentElement.scrollTop
+    document.documentElement.scrollTop -= 5
 
     const step = () => {
-      const percentageOfInitialScroll =
-        document.documentElement.scrollTop / initialTop
+      const currentPosition = document.documentElement.scrollTop
+      const progress = 1.2 - currentPosition / initialTop
 
-      const delta =
-        20 *
-        Math.exp(
-          -percentageOfInitialScroll * 25 * (1 - percentageOfInitialScroll)
-        )
-
+      const delta = 20 * (Math.sin(progress * Math.PI - Math.PI / 2) + 1)
       document.documentElement.scrollTop -= delta
 
       if (document.documentElement.scrollTop > 0) {
@@ -34,10 +30,7 @@ export default function ScrollUpButton() {
 
   return (
     <button
-      className={
-        'btn btn-primary scroll-up-btn' +
-        (isScrolled ? ' show' : '')
-      }
+      className={'btn btn-primary scroll-up-btn' + (isScrolled ? ' show' : '')}
       onClick={scrollUp}
     >
       <FontAwesomeIcon icon={faArrowUpLong} />
