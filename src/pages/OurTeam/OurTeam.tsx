@@ -1,8 +1,13 @@
+import CardsTeam from '../../components/Cards/CardsTeam/CardsTeam'
+import Footer from '../../components/Footer/Footer'
+import Header from '../../components/Header/Header'
 
 export default function OurTeam() {
   return (
-    <div>
-      <h1>OurTeam</h1>
-    </div>
+    <>
+      <Header />
+      <CardsTeam twoRows={true} />
+      <Footer />
+    </>
   )
 }

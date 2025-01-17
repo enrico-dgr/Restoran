@@ -93,7 +93,7 @@ export default function Reservation() {
                 <label htmlFor="message">Special Request</label>
               </div>
               <div className="confirm">
-                <button className="btn btn-primary w-100 py-3" type="submit">
+                <button className="btn btn-primary py-3" type="submit">
                   Book Now
                 </button>
               </div>

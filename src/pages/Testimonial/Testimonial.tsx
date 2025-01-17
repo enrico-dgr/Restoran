@@ -1,8 +1,13 @@
+import Footer from '../../components/Footer/Footer'
+import Header from '../../components/Header/Header'
+import Testimonials from '../../components/Testimonials/Testimonials'
 
 export default function Testimonial() {
   return (
-    <div>
-      <h1>Testimonial</h1>
-    </div>
+    <>
+      <Header />
+      <Testimonials />
+      <Footer />
+    </>
   )
 }

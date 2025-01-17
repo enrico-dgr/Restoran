@@ -1,8 +1,13 @@
+import ContactUs from '../../components/ContactUs/ContactUs'
+import Footer from '../../components/Footer/Footer'
+import Header from '../../components/Header/Header'
 
 export default function Contact() {
   return (
-    <div>
-      <h1>Contact</h1>
-    </div>
+    <>
+      <Header />
+      <ContactUs />
+      <Footer />
+    </>
   )
 }

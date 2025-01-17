@@ -65,6 +65,7 @@
           margin-top: f.pxToRem(15);
           height: 297px;
         }
+
         100% {
           border-top: none;
           margin-top: 0;
@@ -76,9 +77,11 @@
         0% {
           height: 0;
         }
+
         99% {
           height: 297px;
         }
+
         100% {
           height: fit-content;
         }
@@ -186,7 +189,11 @@
       background-color: v.$dark;
 
       .navbar-link {
-        padding: f.pxToRem(20) 0 !important;
+        padding: f.pxToRem(20) 0;
+      }
+
+      .dropdown-menu .navbar-link {
+        padding: f.pxToRem(4) f.pxToRem(16);
       }
     }
 
@@ -207,6 +214,7 @@
         align-items: center;
         justify-content: center;
         width: unset;
+        overflow: visible;
 
 
         &:not(.show) {

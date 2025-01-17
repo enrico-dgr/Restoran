@@ -49,42 +49,7 @@ export default function Home() {
       <AboutUs />
       <FoodMenu numberOfElements={8} />
       <Reservation />
-      <CardsTeam
-        cards={[
-          {
-            name: 'John Doe',
-            description: 'Master Chef',
-            img: '../img/team-1.png',
-            fb: 'https://facebook.com',
-            x: 'https://twitter.com',
-            ig: 'https://instagram.com',
-          },
-          {
-            name: 'Dohn Joe',
-            description: 'Master Chef',
-            img: '../img/team-2.png',
-            fb: 'https://facebook.com',
-            x: 'https://twitter.com',
-            ig: 'https://instagram.com',
-          },
-          {
-            name: 'John Snow',
-            description: 'Master Chef',
-            img: '../img/team-3.png',
-            fb: 'https://facebook.com',
-            x: 'https://twitter.com',
-            ig: 'https://instagram.com',
-          },
-          {
-            name: 'Son Goku',
-            description: 'Master Chef',
-            img: '../img/team-4.png',
-            fb: 'https://facebook.com',
-            x: 'https://twitter.com',
-            ig: 'https://instagram.com',
-          },
-        ]}
-      />
+      <CardsTeam />
       <Testimonials />
       <Footer />
     </>

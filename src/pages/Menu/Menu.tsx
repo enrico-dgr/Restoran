@@ -1,8 +1,13 @@
+import FoodMenu from '../../components/FoodMenu/FoodMenu'
+import Footer from '../../components/Footer/Footer'
+import Header from '../../components/Header/Header'
 
 export default function Menu() {
   return (
-    <div>
-      <h1>Menu</h1>
-    </div>
+    <>
+      <Header />
+      <FoodMenu numberOfElements={8} />
+      <Footer />
+    </>
   )
 }

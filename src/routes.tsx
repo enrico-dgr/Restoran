@@ -29,7 +29,7 @@ const routes = {
   menu: {
     name: 'menu',
     publicName: 'Menu',
-    headerTitle: 'Menu',
+    headerTitle: 'Food Menu',
     absolutePath: '/menu',
     publicPath: '/Home/Pages/Menu',
   },
@@ -45,7 +45,7 @@ const routes = {
     publicName: 'Our Team',
     headerTitle: 'Our Team',
     absolutePath: '/team',
-    publicPath: '/Home/Pages/Our Team',
+    publicPath: '/Home/Pages/Team',
   },
   testimonial: {
     name: 'testimonial',
@@ -57,7 +57,7 @@ const routes = {
   contact: {
     name: 'contact',
     publicName: 'Contact',
-    headerTitle: 'Contact',
+    headerTitle: 'Contact Us',
     absolutePath: '/contact',
     publicPath: '/Home/Pages/Contact',
   },
