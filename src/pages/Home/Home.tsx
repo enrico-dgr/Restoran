@@ -45,6 +45,7 @@ export default function Home() {
             title: '24/7 Service',
           },
         ]}
+        showHeader={false}
       />
       <AboutUs />
       <FoodMenu numberOfElements={8} />
