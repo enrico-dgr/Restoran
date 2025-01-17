@@ -9,9 +9,7 @@ export default function Reservation() {
   const { ref: refForm, visualized: visualizedForm } = useVisualized()
 
   return (
-    <Section
-      className={`section-contact-us ${visualizedHeader ? 'fadeInUp' : ''}`}
-    >
+    <Section className="section-contact-us">
       <div
         className={`section-contact-us__header ${
           visualizedHeader ? 'fadeInUp' : ''
