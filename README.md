@@ -24,3 +24,7 @@ Link: <https://enrico-dgr-restoran-react-copy.netlify.app>
 - BEM
 - Responsive
 - Minimal size css build through PostCSS and PurgeCSS
+
+### Envs
+
+`cross-env` package to handle env-dependent parameters and configurations.
