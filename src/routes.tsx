@@ -61,6 +61,13 @@ const routes = {
     absolutePath: '/contact',
     publicPath: '/Home/Pages/Contact',
   },
+  notFound: {
+    name: 'notFound',
+    publicName: 'Not Found',
+    headerTitle: 'Not Found',
+    absolutePath: '*',
+    publicPath: '/404',
+  },
 }
 
 export default routes

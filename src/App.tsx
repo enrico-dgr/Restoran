@@ -1,11 +1,14 @@
+import React, { Suspense } from 'react'
 import { BrowserRouter } from 'react-router-dom'
-import Routing from './Routing'
 import ContentLoadingSpinner from './components/ContentLoadingSpinner/ContentLoadingSpinner'
 import ScrollUpButton from './components/ScrollUpButton/ScrollUpButton'
 import Title from './components/Metas/Title/Title'
 import ErrorBoundary from './components/ErrorBoundary/ErrorBoundary'
 
 import './styles/index.scss'
+
+// Lazy load the Routing component
+const Routing = React.lazy(() => import('./Routing'))
 
 function App() {
   return (
@@ -15,7 +18,9 @@ function App() {
         <ScrollUpButton />
         <BrowserRouter>
           <Title />
-          <Routing />
+          <Suspense fallback={<ContentLoadingSpinner />}>
+            <Routing />
+          </Suspense>
         </BrowserRouter>
       </div>
     </ErrorBoundary>

@@ -220,6 +220,7 @@
         &:not(.show) {
           height: unset;
           min-height: fit-content;
+          animation-name: none;
         }
 
         &.show {

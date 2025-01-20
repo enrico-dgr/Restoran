@@ -1,13 +1,17 @@
+import React from 'react'
 import { useRoutes, Navigate } from 'react-router-dom'
-import Home from './pages/Home/Home'
-import Menu from './pages/Menu/Menu'
-import About from './pages/About/About'
-import Contact from './pages/Contact/Contact'
 import routes from './routes'
-import Service from './pages/Service/Service'
-import Booking from './pages/Booking/Booking'
-import OurTeam from './pages/OurTeam/OurTeam'
-import Testimonial from './pages/Testimonial/Testimonial'
+
+// Lazy load all pages
+const Home = React.lazy(() => import('./pages/Home/Home'))
+const Menu = React.lazy(() => import('./pages/Menu/Menu'))
+const About = React.lazy(() => import('./pages/About/About'))
+const Contact = React.lazy(() => import('./pages/Contact/Contact'))
+const Service = React.lazy(() => import('./pages/Service/Service'))
+const Booking = React.lazy(() => import('./pages/Booking/Booking'))
+const OurTeam = React.lazy(() => import('./pages/OurTeam/OurTeam'))
+const Testimonial = React.lazy(() => import('./pages/Testimonial/Testimonial'))
+const NotFound = React.lazy(() => import('./pages/NotFound/NotFound'))
 
 export default function Routing() {
   const elements = useRoutes([
@@ -46,6 +50,10 @@ export default function Routing() {
     {
       path: routes.contact.name,
       element: <Contact />,
+    },
+    {
+      path: routes.notFound.absolutePath,
+      element: <NotFound />,
     },
   ])
 
