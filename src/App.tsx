@@ -1,23 +1,24 @@
 import { BrowserRouter } from 'react-router-dom'
-import { Helmet } from 'react-helmet'
-import './styles/index.scss'
-import ContentLoadingSpinner from './components/ContentLoadingSpinner/ContentLoadingSpinner'
-
 import Routing from './Routing'
+import ContentLoadingSpinner from './components/ContentLoadingSpinner/ContentLoadingSpinner'
 import ScrollUpButton from './components/ScrollUpButton/ScrollUpButton'
+import Title from './components/Metas/Title/Title'
+import ErrorBoundary from './components/ErrorBoundary/ErrorBoundary'
+
+import './styles/index.scss'
 
 function App() {
   return (
-    <div className="container-xxl bg-white p-0">
-      <ContentLoadingSpinner />
-      <ScrollUpButton />
-      <Helmet>
-        <title>Restoran - Bootstrap Restaurant Template</title>
-      </Helmet>
-      <BrowserRouter>
-        <Routing />
-      </BrowserRouter>
-    </div>
+    <ErrorBoundary>
+      <div className="container-xxl bg-white p-0">
+        <ContentLoadingSpinner />
+        <ScrollUpButton />
+        <BrowserRouter>
+          <Title />
+          <Routing />
+        </BrowserRouter>
+      </div>
+    </ErrorBoundary>
   )
 }
 
